@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/FRItemAirport"
+    android:layout_width="match_parent"
+    android:clickable="true">
+
+    <RelativeLayout style="@style/FRItemAirportBlock">
+
+        <TextView
+            android:id="@+id/airport_name"
+            style="@style/FRText.Large.Selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/airport_country"
+            style="@style/FRText.Small.Gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/airport_name"
+            android:gravity="center_vertical"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/airport_code"
+            style="@style/FRText.Small.Blue"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:singleLine="true" />
+
+    </RelativeLayout>
+</RelativeLayout>

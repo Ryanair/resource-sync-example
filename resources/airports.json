@@ -1,33 +1,33 @@
 {
     "airports": [
         {
-            "code" : "DUB",
-            "name" : "Dublin",
-            "timezone" : 0,
+            "code": "DUB",
+            "name": "Dublin",
+            "timezone": 0,
             "country": "IE"
         },
         {
-            "code" : "STN",
-            "name" : "London Stansted",
-            "timezone" : 0,
+            "code": "STN",
+            "name": "London Stansted",
+            "timezone": 0,
             "country": "UK"
         },
         {
-            "code" : "PDV",
-            "name" : "Plovdiv",
-            "timezone" : 2,
+            "code": "PDV",
+            "name": "Plovdiv",
+            "timezone": 2,
             "country": "BG"
         },
         {
-            "code" : "SFO",
-            "name" : "San Francisco Airport",
-            "timezone" : -8,
+            "code": "SFO",
+            "name": "San Francisco Airport",
+            "timezone": -8,
             "country": "US"
         },
         {
-            "code" : "OTP",
-            "name" : "Bucharest Otopeni",
-            "timezone" : 2,
+            "code": "OTP",
+            "name": "Bucharest Otopeni",
+            "timezone": 2,
             "country": "RO"
         }
     ]

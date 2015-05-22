@@ -3,7 +3,7 @@
 This example project illustrates how to implement smart recource caching using [**Sync gateway**](https://github.com/couchbase/sync_gateway) + [**Couchbase lite**](https://github.com/couchbase/couchbase-lite-android)
 
 ## Architecture
-![](http://i284.photobucket.com/albums/ll17/Vlado_Atanasov/node_resource_update_zpsoqajcdw5.png)
+![](http://i284.photobucket.com/albums/ll17/Vlado_Atanasov/node_resource_update_fixed_zpsf3gzjozf.png)
 
 A nodejs service retrieves all resource documents from the REST API and compares them with the documents stored in the couchbase bucket, if differences are detected, the service updates the couchbase bucket via the sync API, which increments the revision number and triggers a sync to the mobile client. This technique allows us to save a significant amount of traffic and still gives us the ability to update resources without releasing an application update
 

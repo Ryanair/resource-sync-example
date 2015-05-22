@@ -1,6 +1,6 @@
 # Recource caching using Sync Gateway + Couchbase Lite
 
-This example project illustrates how to implement smart recource caching using [**Sync gateway**](https://github.com/couchbase/sync_gateway) + [**Couchbase lite**](https://github.com/couchbase/couchbase-lite-android)
+This example project illustrates how to implement smart recource caching using [**Sync gateway**](https://github.com/couchbase/sync_gateway) + [**Couchbase lite**](https://github.com/couchbase/couchbase-lite-android). The technique is very useful if you can't modify your resource repository (for ex. using a third party or a legacy system and your team has not enough time to implement the sync API)
 
 ## Architecture
 ![](http://i284.photobucket.com/albums/ll17/Vlado_Atanasov/node_resource_update_fixed_zpsf3gzjozf.png)

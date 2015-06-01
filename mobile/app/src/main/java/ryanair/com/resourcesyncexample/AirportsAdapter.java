@@ -41,6 +41,10 @@ public class AirportsAdapter extends RecyclerView.Adapter<AirportsAdapter.ViewHo
         return mDataSet.size();
     }
 
+    public Airport getItem(int position) {
+        return mDataSet.get(position);
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.airport_name)
         public TextView airportName;

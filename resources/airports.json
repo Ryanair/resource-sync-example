@@ -4,31 +4,39 @@
             "code": "DUB",
             "name": "Dublin",
             "timezone": 0,
-            "country": "IE"
+            "country": "IE",
+            "markets": [
+                "STN",
+                "PDV"
+            ]
         },
         {
             "code": "STN",
             "name": "London Stansted",
             "timezone": 0,
-            "country": "UK"
+            "country": "UK",
+            "markes": []
         },
         {
             "code": "PDV",
             "name": "Plovdiv",
             "timezone": 2,
-            "country": "BG"
+            "country": "BG",
+            "markes": []
         },
         {
             "code": "SFO",
             "name": "San Francisco Airport",
             "timezone": -8,
-            "country": "US"
+            "country": "US",
+            "markes": []
         },
         {
             "code": "OTP",
             "name": "Bucharest Otopeni",
             "timezone": 2,
-            "country": "RO"
+            "country": "RO",
+            "markes": []
         }
     ]
 }

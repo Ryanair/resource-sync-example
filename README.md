@@ -30,3 +30,6 @@ data.getData("airports.json", "airport", "code", "airports");
 if everything is setup correctly and you execute `node main.js` you should start seing the documents being created, if you change a document in your REST API and re-run the service, you will create a new revision of the document
 
 To set up the android example project, you need to edit `StorageManager.java` and set DATABASE_NAME and syncUrl according your set up. Once this is set up, the application will start listening for changes through the sync gateway. The application will send only the latest revision number to the sync gateway and work with the local clone of the data, thus saving the client from generating unnesesarry traffic. When the node service updates the bucket, you will see the data transferred to the device 
+
+## Sync gateway wrapper
+The zip sg-script.zip contains a sync gateway wrapper. Execute `./sg.sh start` to run the sync gateway locally, without the need to set up couchbase server + sync gateway. The service will run on http://localhost:4985 (admin port) and http://localhost:4984 (mobile port). You can configure the data bucket and the sync funtion in script/sync-gateway-config.json

@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity implements StorageManager.Ai
             AirportsAdapter adapter = (AirportsAdapter) airportsList.getAdapter();
 
             Airport airport = adapter.getItem(position);
-            // TODO list all markets 
+            // TODO list all markets
         }
     };
 

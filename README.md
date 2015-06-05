@@ -33,3 +33,27 @@ To set up the android example project, you need to edit `StorageManager.java` an
 
 ## Sync gateway wrapper
 The directory sg-wrapper contains a sync gateway wrapper. Execute `./sg.sh start` to run the sync gateway locally, without the need to set up couchbase server + sync gateway. The service will run on http://localhost:4985 (admin port) and http://localhost:4984 (mobile port). You can configure the data bucket and the sync funtion in script/sync-gateway-config.json
+
+## Using a pre-built database
+You can include a pre-built copy of your database in your application. The database will be shipped with the application. This can be good for big databases, it's faster to download 100mb of bulk data, via google play, than waiting for the replication to transfer all data. To do that, you first need to create a clean snapshot of your database in an android emulator. Run the replication on a clean database and wait for it to finish, this will download all the documents with the proper revision metadata, so next time you run the replication, couchbase lite will download only the new documents, saving you bandwith and initialization times. Then download the generated clbite file from the emulator using adb `adb pull /data/data/com.packagename/files/db_name.cblite`. In the current example, this looks like that: `adb pull /data/data/ryanair.com.resourcesyncexample/files/reference_data.cblite`. After you retrieve the database, you need to include it in your project. Place it in your assets folder. To inflate the database, you can use the following code snippet:
+```java
+ try {
+    mDatabase = mManager.getExistingDatabase(DATABASE_NAME);
+
+    // the database does not exist
+    // copy it from the assets folder
+    if (mDatabase == null) {
+        InputStream assetDb = mContext.getAssets().open(DATABASE_NAME + DB_FILE_EXT);
+        mManager.replaceDatabase(DATABASE_NAME, assetDb, null);
+
+        // open the database after replacing
+        mDatabase = mManager.getDatabase(DATABASE_NAME);
+    }
+
+} catch (CouchbaseLiteException | IOException e) {
+    Log.e(TAG, e.getMessage());
+}
+```
+
+For more information, you can consult the [**couchbase developer portal**](http://developer.couchbase.com/mobile/develop/guides/couchbase-lite/native-api/database/index.html)
+

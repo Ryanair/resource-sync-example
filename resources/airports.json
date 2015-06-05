@@ -2,7 +2,7 @@
     "airports": [
         {
             "code": "DUB",
-            "name": "Dublin",
+            "name": "Dublin T1",
             "timezone": 0,
             "country": "IE",
             "markets": [

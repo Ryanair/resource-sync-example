@@ -2,7 +2,6 @@ package ryanair.com.resourcesyncexample;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -21,17 +20,19 @@ public class MainActivity extends ActionBarActivity implements StorageManager.Ai
     private StorageManager mStorageManager;
     @InjectView(R.id.airports_list)
     RecyclerView airportsList;
+    AirportsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        adapter = new AirportsAdapter(new ArrayList<Airport>());
+
         ButterKnife.inject(this);
 
         airportsList.setLayoutManager(new LinearLayoutManager(this));
-        airportsList.setItemAnimator(new DefaultItemAnimator());
-        airportsList.setAdapter(new AirportsAdapter(new ArrayList<Airport>()));
+        airportsList.setAdapter(adapter);
         airportsList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
         airportsList.addOnItemTouchListener(new RecyclerItemTouchListener(this, touchListener));
 
@@ -51,13 +52,38 @@ public class MainActivity extends ActionBarActivity implements StorageManager.Ai
 
     @Override
     public void onChanged(final List<Airport> airports) {
-        if (airports.size() > 0) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    airportsList.setAdapter(new AirportsAdapter(airports));
-                }
-            });
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateDataSet(airports);
+            }
+        });
+    }
+
+    void updateDataSet(List<Airport> airports) {
+        // the adapter is empty, just add all items
+        if (adapter.getItemCount() == 0 && !airports.isEmpty()) {
+            airportsList.setAdapter(new AirportsAdapter(airports));
+            return;
+        }
+
+        List<Airport> items = adapter.getItems();
+        List<Airport> previousItems = new ArrayList<>(items);
+
+        // remove the deleted items
+        for (int i = 0; i < previousItems.size(); i++) {
+            Airport previousItem = previousItems.get(i);
+            if (!airports.contains(previousItem)) {
+                adapter.removeItem(previousItem);
+            }
+        }
+
+        // add the new items
+        for (int i = 0; i < airports.size(); i++) {
+            Airport currentItem = airports.get(i);
+            if (!items.contains(currentItem)) {
+                adapter.addItem(i, currentItem);
+            }
         }
     }
 }

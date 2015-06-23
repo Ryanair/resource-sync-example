@@ -45,6 +45,21 @@ public class AirportsAdapter extends RecyclerView.Adapter<AirportsAdapter.ViewHo
         return mDataSet.get(position);
     }
 
+    public List<Airport> getItems() {
+        return mDataSet;
+    }
+
+    public void removeItem(Airport item) {
+        int i = mDataSet.indexOf(item);
+        mDataSet.remove(i);
+        notifyItemRemoved(i);
+    }
+
+    public void addItem(int i, Airport item) {
+        mDataSet.add(i, item);
+        notifyItemInserted(i);
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.airport_name)
         public TextView airportName;

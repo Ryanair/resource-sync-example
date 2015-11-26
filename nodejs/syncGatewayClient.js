@@ -1,4 +1,4 @@
-require("globals");
+require("./globals.js");
 
 module.exports = {
     getDocument: function (documentId, cb) {

@@ -1,8 +1,8 @@
-require("globals");
+require("./globals.js");
 
 require('babel/polyfill')
 
-var sg = require("syncGatewayClient");
+var sg = require("./syncGatewayClient.js");
 var diff = require("rus-diff").diff;
 
 module.exports = {
